@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -329,14 +329,14 @@ return [
 //        ],
         ['header' => 'account_settings'],
         [
+            'text' => 'Roles',
+            'url' => 'admin/role',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
             'text' => 'profile',
             'url' => 'admin/profile',
             'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
         ],
         [
             'text' => 'multilevel',

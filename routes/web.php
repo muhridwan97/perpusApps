@@ -24,5 +24,10 @@ Route::middleware('auth', 'role:admin|user')->group(function () {
     Route::patch('/admin/profile', [Controller\Admin\ProfileController::class, 'update'])->name('admin.profile.update');
     Route::delete('/admin/profile', [Controller\Admin\ProfileController::class, 'destroy'])->name('admin.profile.destroy');
 });
+Route::middleware('auth', 'role:admin')->group(function () {
+    Route::get('/admin/role', [Controller\Admin\RoleController::class, 'index'])->name('admin.role');
+    Route::patch('/admin/role', [Controller\Admin\RoleController::class, 'update'])->name('admin.role.update');
+    Route::delete('/admin/role', [Controller\Admin\RoleController::class, 'destroy'])->name('admin.role.destroy');
+});
 
 require __DIR__.'/auth.php';

@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-class ProfileController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
+    public function index(Request $request): View
     {
-        return view('admin.profile.edit', [
+        return view('admin.role.index', [
             'user' => $request->user(),
         ]);
     }
@@ -34,7 +34,6 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
-        toastr()->success('Data has been saved successfully!');
 
         return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
     }

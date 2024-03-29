@@ -19,6 +19,8 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "bower": "^1.8.14"
+        "bower": "^1.8.14",
+        "jquery": "^3.7.1",
+        "sweetalert2": "^11.10.7"
     }
 }

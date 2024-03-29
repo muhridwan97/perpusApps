@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('admin.profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -48,11 +48,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-{{--            <x-primary-button>{{ __('Save') }}</x-primary-button>--}}
-            <button type= 'button' id= 'btn-ok' class = 'inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150'>
-                {{ __('Save') }}
-            </button>
-{{--            <input type="button" id="btn-ok" value="{{ __('Save') }}" name="register" class="btn btn-primary accept"/>--}}
+            <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -66,28 +62,3 @@
         </div>
     </form>
 </section>
-<script type="module">
-
-    $('form #btn-ok').click(function(){
-        let $form = $(this).closest('form');
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, save it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Swal.fire(
-                //     'Saved!',
-                //     'Your profile has been saved.',
-                //     'success'
-                // )
-                $form.submit();
-            }
-        });
-    });
-
-</script>
