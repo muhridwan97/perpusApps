@@ -28,10 +28,10 @@
     </div>
 
     {{-- Error feedback --}}
-    @if($isInvalid())
+    @if($errors->has($errorKey) && ! isset($disableFeedback))
         <span class="invalid-feedback d-block" role="alert">
-            <strong>{{ $errors->first($errorKey) }}</strong>
-        </span>
+        <strong>{{ $errors->first($errorKey) }}</strong>
+    </span>
     @endif
 
     {{-- Bottom slot --}}

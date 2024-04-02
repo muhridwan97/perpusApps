@@ -4,7 +4,9 @@
 
 @section('title')
     {{ config('adminlte.title') }}
-    @hasSection('subtitle') | @yield('subtitle') @endif
+    @hasSection('subtitle')
+        | @yield('subtitle')
+    @endif
 @stop
 
 {{-- Extend and customize the page content header --}}
@@ -49,10 +51,18 @@
 @push('js')
     <script>
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Add your common script logic here...
         });
-
+        document.addEventListener('livewire:init', function () {
+            Livewire.on('log', (event) => {
+                try {
+                    console[event[0].level](event[0].obj);
+                } catch {
+                    console.log(event[0]);
+                }
+            });
+        });
     </script>
 @endpush
 
@@ -62,14 +72,15 @@
     <style type="text/css">
 
         {{-- You can add AdminLTE customizations here --}}
-/*
-    .card-header {
-        border-bottom: none;
-    }
-    .card-title {
-        font-weight: 600;
-    }
-    */
+
+        /*
+            .card-header {
+                border-bottom: none;
+            }
+            .card-title {
+                font-weight: 600;
+            }
+            */
 
     </style>
 @endpush
