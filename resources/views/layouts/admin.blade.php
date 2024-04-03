@@ -54,6 +54,8 @@
         $(document).ready(function () {
             // Add your common script logic here...
         });
+
+        //buat console log di livewire
         document.addEventListener('livewire:init', function () {
             Livewire.on('log', (event) => {
                 try {
@@ -63,6 +65,16 @@
                 }
             });
         });
+
+        //on submit disable
+        $(document).ready(function(){
+            $("form").on("submit", function(){
+                var submit = $(this).find(':submit');
+                submit.prop('disabled', true);
+                submit.html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Loading...`);
+            });//submit
+        });//document ready
     </script>
 @endpush
 

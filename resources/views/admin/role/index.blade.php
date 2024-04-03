@@ -10,8 +10,6 @@
 
 @section('content_body')
     {{-- Setup data for datatables --}}
-    @php
-    @endphp
 
     <div class="card">
         <div class="card-body">
@@ -25,30 +23,6 @@
                     </div>
                 </div>
             </div>
-
-            {{--                <div class="my-3 p-3 bg-body rounded shadow-sm">--}}
-            <!-- FORM PENCARIAN -->
-            {{--                    <div class="pb-3">--}}
-            {{--                        <form class="d-flex" action="" method="get">--}}
-            {{--                            <input class="form-control me-1" type="search" name="katakunci"--}}
-            {{--                                   value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci"--}}
-            {{--                                   aria-label="Search">--}}
-            {{--                            <button class="btn btn-secondary" type="submit">Cari</button>--}}
-            {{--                        </form>--}}
-            {{--                    </div>--}}
-
-            <!-- TOMBOL TAMBAH DATA -->
-            {{--                <x-adminlte-datatable id="table1" :heads="$heads">--}}
-            {{--                    @foreach($roles as $index => $row )--}}
-            {{--                        <tr>--}}
-            {{--                            <td>{!! $index+1 !!}</td>--}}
-            {{--                            <td>{!! $row->name !!}</td>--}}
-            {{--                            <td>{!! $row->guard_name !!}</td>--}}
-            {{--                            <td><nobr>{!! $btnEdit.$btnDelete.$btnDetails !!}</td>--}}
-            {{--                        </tr>--}}
-            {{--                    @endforeach--}}
-            {{--                </x-adminlte-datatable>--}}
-            {{--                </div>--}}
             <livewire:role-table>
         </div>
     </div>
@@ -65,5 +39,38 @@
 
 @push('js')
     <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+@endpush
+
+@push('js')
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            Livewire.on('triggerDelete', id => {
+                Swal.fire({
+                    title: 'Are You Sure?',
+                    html: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                }).then((result) => {
+                    if (result.value) {
+                        Livewire.dispatch('deleteRole', {id: id})
+                    }
+                });
+            });
+        })
+
+        // $('#btn-delete').click(function () {
+        //     let post_id = $(this).data('id');
+        //     Swal.fire({
+        //         title: 'Are You Sure?',
+        //         html: "You won't be able to revert this!",
+        //         icon: 'warning',
+        //         showCancelButton: true,
+        //     }).then((result) => {
+        //         if (result.value) {
+        //             Livewire.call('destroy', post_id)
+        //         }
+        //     });
+        // })
+    </script>
 @endpush
 

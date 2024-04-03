@@ -10,30 +10,29 @@
 
 @section('content_body')
     {{-- Setup data for datatables --}}
-    <div class="container">
-        {{--        <div class="row">--}}
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto mr-auto">
-                        <h5 class="card-title">Create Roles</h5>
-                    </div>
-                </div>
-                <form action='{{url('admin/role')}}' method='post'>
-                    @csrf
-                    <div class="row">
-                        <x-adminlte-input name="name" label="Nama Role" placeholder="Masukkan Nama Role"
-                                          value="{{ Session::get('name') }}"
-                                          class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                          fgroup-class="col-md-6"/>
-                    </div>
-                    <x-adminlte-button label="Save" theme="primary" type="submit" icon="fas fa-save"/>
-                </form>
-
+    {{--    <div class="container">--}}
+    {{--        <div class="row">--}}
+    <div class="card card-primary">
+        <div class="card-header">
+            <div class="col-auto mr-auto">
+                <h5 class="card-title">Create Roles</h5>
             </div>
         </div>
-        {{--        </div>--}}
+        <div class="card-body">
+            <form action='{{url('admin/role')}}' method='post'>
+                @csrf
+                <div class="row">
+                    <x-adminlte-input name="name" label="Nama Role" placeholder="Masukkan Nama Role"
+                                      value="{{ Session::get('name') }}"
+                                      class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                      fgroup-class="col-md-6"/>
+                </div>
+                <x-adminlte-button label="Save" theme="outline-primary" type="submit" icon="fas fa-save"/>
+            </form>
+        </div>
     </div>
+    {{--        </div>--}}
+    {{--    </div>--}}
 @stop
 
 {{-- Push extra CSS --}}
